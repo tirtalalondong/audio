@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="Suara" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>M-Learning Bahasa	</name>
+
+<widget id="com.srcsuara.suara" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Suara</name>
     <description>
-        Mobile Learning Bahasa Indonesia
+        Test Suara Di Android
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Natalia Melani

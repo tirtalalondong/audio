@@ -1,0 +1,7 @@
+{
+	"name": "cordova-plugin-lowlatencyaudio",
+	"version": "1.0",
+	"dependencies": {
+		"cordova": "~3.0.0"
+	}
+}

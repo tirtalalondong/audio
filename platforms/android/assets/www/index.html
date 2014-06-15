@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" charset="utf-8" src="PGLowLatencyAudio.js"></script>
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Test Audio</title>
+    <style>
+        
+        * {
+            -webkit-overflow-scrolling: none;
+        }
+        
+        body {
+            background-color:#222;
+        }
+            
+        div {
+            position:absolute;
+            width: 46%;
+            height: 44%;
+            border-radius: 20px;
+            border: 5px solid rgba(50,50,50,.5);
+            background-color:rgba(255,140,0,.8);  
+            font-family: 'Monoton', cursive;
+            font-size: 50pt;
+        }
+        
+        #bassDiv {
+            left:20px;
+            bottom:20px;
+        }
+        #snareDiv {
+            right:20px;
+            bottom:20px;
+        }
+        #hhDiv {
+            right:20px;
+            top:20px;
+        }
+        #bongoDiv {
+            left:20px;
+            top:20px;
+        }
+        
+        .touched {
+            background-color:rgba(255,140,0,.6);  
+            border: 5px solid rgba(50,50,50,.8); 
+        }
+    </style>
+    <script type="text/javascript">
+            
+        function onBodyLoad()
+        {		
+            document.addEventListener("deviceready", onDeviceReady, false);
+            document.addEventListener("touchmove", function (e) { e.preventDefault(); return false; }, false);
+            document.addEventListener("touchstart", function (e) { e.preventDefault(); return false; }, false);	
+        }
+            
+        function onDeviceReady()
+        {
+            PGLowLatencyAudio.preloadFX('bass', 'assets/a.mp3');
+            PGLowLatencyAudio.preloadFX('snare', 'assets/b.mp3');
+            PGLowLatencyAudio.preloadFX('highhat', 'assets/c.mp3');
+            PGLowLatencyAudio.preloadFX('bongo', 'assets/d.mp3');	    
+        }
+        
+        function bass() {
+            document.getElementById("bassDiv").className = "touched";
+            PGLowLatencyAudio.play('bass');
+        }
+        
+        function snare() {
+            document.getElementById("snareDiv").className = "touched";
+            PGLowLatencyAudio.play('snare');
+        }
+        
+        function highhat() {
+            document.getElementById("hhDiv").className = "touched";
+            PGLowLatencyAudio.play('highhat');
+        }
+        
+        function bongo() {
+            document.getElementById("bongoDiv").className = "touched";
+            PGLowLatencyAudio.play('bongo');
+        }
+        
+        function touchend( event ) {
+            event.target.className = "";
+        }
+    </script>
+  </head>
+  
+  <body onload="onBodyLoad()">
+      
+      <div id="bassDiv" ontouchstart="bass()" ontouchend="touchend(event)">Bass</div>
+      <div id="hhDiv" ontouchstart="highhat();" ontouchend="touchend(event)">High Hat</div>
+      <div id="snareDiv" ontouchstart="snare();" ontouchend="touchend(event)">Snare</div>
+      <div id="bongoDiv" ontouchstart="bongo();" ontouchend="touchend(event)">bongo</div>
+      
+  </body>
+</html>
